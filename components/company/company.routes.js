@@ -7,4 +7,7 @@ module.exports = (app) => {
 
   /** Insert new company */
   app.post('/' + process.env.VERSION + '/company/', company.save)
+
+  /** Delete company */
+  app.delete('/' + process.env.VERSION + '/company/:id', company.delete)
 }

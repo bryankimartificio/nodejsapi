@@ -26,3 +26,11 @@ exports.save = (name, address, city, state, zip, country, emailAddr, createdDate
     })
   })
 }
+
+exports.delete = (id) => {
+  return new Promise(function (resolve, reject) {
+    companyData.delete(id).then(function (save) {
+      resolve(save)
+    })
+  })
+}
