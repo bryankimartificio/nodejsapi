@@ -9,7 +9,7 @@ require('dotenv').config()
 /** Creating express application */
 const app = express()
 
-/** Initializing body parser middleware */
+/** Initializing parcer middleware */
 app.use(bodyParser.json())
 
 /** Activate mongoose sync call */
@@ -24,16 +24,12 @@ mongoose.connect(dbConfig.url, { useNewUrlParser: true })
     process.exit()
   })
 
-/** Cors Middlewares */
+/** Middlewares */
 var middlewaresCors = require('./middlewares/cors.middlewares')(app)
 app.use(middlewaresCors)
 
-/** JWT Middlewares */
-var middlewaresJWT = require('./middlewares/jwt.middlewares')(app)
-app.use(middlewaresJWT)
-
 /** Routes */
-require('./components/user/user.routes')(app)
-require('./components/company/company.routes')(app)
+app.get('/', (req, res) => res.send('Hello World!'))
+require('./components/company.routes')(app)
 
 app.listen(process.env.PORT, () => console.log(`Example app listening on port ${process.env.PORT}!`))
