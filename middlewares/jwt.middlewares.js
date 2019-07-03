@@ -3,7 +3,7 @@ require('dotenv').config()
 
 module.exports = function (options) {
   return function (req, res, next) {
-    if (!req.originalUrl.toString().includes('register')) {
+    if (!req.originalUrl.toString().includes('authentications')) {
       let token = req.headers['x-access-token']
       if (!token) return res.status(401).send({ statuscode: 400, message: 'No token provided.' })
       jwt.verify(token, process.env.SECRET, function (err, decoded) {

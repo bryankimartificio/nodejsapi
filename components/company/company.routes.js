@@ -3,11 +3,11 @@ module.exports = (app) => {
   const company = require('./company.controller')
 
   /** Get all company */
-  app.get('/' + process.env.VERSION + '/company/', company.findAll)
+  app.get('/api/' + process.env.VERSION + '/companies/', company.findAll)
 
   /** Insert new company */
-  app.post('/' + process.env.VERSION + '/company/', company.save)
+  app.post('/api/' + process.env.VERSION + '/companies/', company.save)
 
   /** Delete company */
-  app.delete('/' + process.env.VERSION + '/company/:id', company.delete)
+  app.delete('/api/' + process.env.VERSION + '/companies/:id', company.delete)
 }
